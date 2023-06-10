@@ -1,5 +1,6 @@
-"use client"
-import { useSession, signIn, signOut } from "next-auth/react"
+import { useSession, signIn, signOut } from "next-auth/react";
+import SendSMSForm from './sendSMSForm';
+
 
 export default function Component() {
   const { data: session } = useSession()
@@ -8,6 +9,7 @@ export default function Component() {
       <>
         <div>
         <h1>Hello, {session.user.name}!</h1> <br/>
+        <SendSMSForm />
         {/* Signed in as {session.user.name} <br /> */}
         <button onClick={() => signOut()}>Sign out</button>
         </div>
