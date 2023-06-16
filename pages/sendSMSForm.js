@@ -1,42 +1,53 @@
 import { useState } from 'react';
+import Papa from 'papaparse';
 
 export default function SendSMSForm() {
-  const [recipient, setRecipient] = useState('');
+  const [recipients, setRecipients] = useState([]);
   const [message, setMessage] = useState('');
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    Papa.parse(recipients, {
+      // header: true,
+      // skipEmptyLines: true,
+      step: function(results) {
+        const csv = results.data
+        console.log('csv:', csv);
+        csv.forEach(async (element) => {
+          const recipient = element
 
-    // TODO: Make a POST request to your sendSMSHandler API route
-    const response = await fetch('/api/sendSMS', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ recipient, message }),
-    });
-
-    if (response.ok) {
-      // SMS sent successfully
-      console.log('SMS sent successfully');
-    } else {
-      // Failed to send SMS
-      console.log('Failed to send SMS');
-    }
-
+          // TODO: Make a POST request to your sendSMSHandler API route
+          const response = await fetch('/api/sendSMS', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ recipient, message }),
+          });
+          if (response.ok) {
+            // SMS sent successfully
+            console.log('SMS sent successfully');
+          } else {
+            // Failed to send SMS
+            console.log('Failed to send SMS');
+          }
+        })
+      }
+    })
     // Reset the form fields
-    setRecipient('');
+    setRecipients([ ]);
     setMessage('');
-  };
+  }
 
   return (
     <form onSubmit={handleSubmit}>
       <label>
-        Recipient:
+        Upload File:
         <input
-          type="text"
-          value={recipient}
-          onChange={(e) => setRecipient(e.target.value)}
+          type="file"
+          name="file"
+          accept='.csv'
+          onChange={(e) => setRecipients(e.target.files[0])}
           required
         />
       </label>
