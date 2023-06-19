@@ -34,6 +34,7 @@ export default async function handler(req, res) {
       });
 
       res.status(200).json({ success: true, message: 'C2B payment simulated successfully' });
+      console.log(res)
     } catch (error) {
       console.error('Failed to simulate C2B payment:', error);
       res.status(500).json({ success: false, message: 'Failed to simulate C2B payment' });

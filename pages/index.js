@@ -3,6 +3,7 @@ import SendSMSForm from './sendSMSForm';
 // import StkPush from "./darajaService";
 import RegisterURLs from "./registerForm";
 import C2BPayment from "./c2bForm";
+import B2CForm from "./b2cForm";
 
 export default function Component() {
   const { data: session } = useSession()
@@ -15,6 +16,7 @@ export default function Component() {
         {/* <StkPush /><br></br> */}
         <RegisterURLs /><br></br>
         <C2BPayment /><br></br>
+        <B2CForm /><br></br>
 
 
         {/* Signed in as {session.user.name} <br /> */}
