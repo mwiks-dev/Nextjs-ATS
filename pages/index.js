@@ -11,7 +11,7 @@ export default function Component() {
     return (
       <>
         <div>
-        <h1>Hello, {session.user.name}!</h1> <br/>
+        <h1 className='text-3xl text-green-600 p-2'>Hello, {session.user.name}!</h1> <br/>
         <SendSMSForm /><br></br>
         {/* <StkPush /><br></br> */}
         <RegisterURLs /><br></br>

@@ -1,4 +1,4 @@
-// import { SessionProvider } from 'next-auth/react';
+import '../styles/global.css'
 import SignUp from "./signUpForm";
 function MyApp({ Component, pageProps }) {
   return (
