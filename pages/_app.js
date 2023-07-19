@@ -1,10 +1,8 @@
-import { SessionProvider } from 'next-auth/react';
-
+// import { SessionProvider } from 'next-auth/react';
+import SignUp from "./signUpForm";
 function MyApp({ Component, pageProps }) {
   return (
-    <SessionProvider session={pageProps.session}>
-      <Component {...pageProps} />
-    </SessionProvider>
+    <SignUp/>
   );
 }
 
