@@ -30,48 +30,27 @@ export default function SignUp(){
         }
     } 
     return (
-        <div >
-          <h2 >Sign Up</h2>
-          {error && <p>{error}</p>}
-          <form onSubmit={handleSubmit}>
-          <div>
-              <label>Username:</label>
-              <input
-                type="text"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                required
-              />
-            </div>
-            <div>
-              <label>Email:</label>
-              <input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-              />
-            </div>
-            <div>
-              <label>Password:</label>
-              <input
-                type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                required
-              />
-            </div>
-            {/* <div>
-              <label>Confirm Password:</label>
-              <input
-                type="password"
-                value={password2}
-                onChange={(e) => setPassword2(e.target.value)}
-                required
-              />
-            </div> */}
-            <button type="submit">Sign Up</button>
-          </form>
+        <div class="card" style={{display: 'flex',justifyContent: 'center',alignItems: 'center',margin: '10em'}}>
+          <h2>Sign Up</h2>
+          <div class="card-body">
+            <form class="row g-3" onSubmit={handleSubmit}>
+                <div class="col-md-6">
+                  <label for="inputName" class="form-label">Username</label>
+                  <input type="text" class="form-control" value = {name} onChange={(e) => setName(e.target.value)} id="inputName"placeholder="Jane Doe" required/>
+                </div>
+                <div class="col-md-6">
+                  <label for="inputEmail" class="form-label">Email</label>
+                  <input type="email" class="form-control" value = {email} onChange={(e) => setEmail(e.target.value)} id="inputEmail"placeholder="janedoe@gmail.com" required/>
+                </div>
+                <div class="col-6">
+                  <label for="inputPassword" class="form-label">Password</label>
+                  <input type="text" class="form-control" value = {password} onChange={(e) => setPassword(e.target.value)} id="inputPassword" required/>
+                </div>
+                <div class="col-12">
+                  <button type="submit" class="btn btn-success">Sign in</button>
+                </div>
+              </form>
+          </div>
         </div>
       );  
 };
