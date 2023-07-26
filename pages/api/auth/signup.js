@@ -1,5 +1,7 @@
 import prisma from '@/lib/prisma';
 import bcrypt from 'bcrypt';
+const { PrismaClient, PrismaClientKnownRequestError, Prisma } = require('@prisma/client');
+
 
 async function signup(req, res) {
     //Only POST mothod is accepted
@@ -18,7 +20,10 @@ async function signup(req, res) {
             console.log(newUser)
             return res.status(200).json({ message: 'User created successfully'});
         }catch (error) {
-            console.error(error)        
+            if (error instanceof PrismaClientKnownRequestError){
+                return res.status(401).json({ message: 'A user with that email exists' });
+
+            }      
         }
     } 
         //Response for other than POST method

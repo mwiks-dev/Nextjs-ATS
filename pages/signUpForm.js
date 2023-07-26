@@ -31,7 +31,7 @@ export default function SignUp(){
     } 
     return (
         <div class="card" style={{display: 'flex',justifyContent: 'center',alignItems: 'center',margin: '10em'}}>
-          <h2>Sign Up</h2>
+          <h2>Sign Up</h2><br></br>
           <div class="card-body">
             <form class="row g-3" onSubmit={handleSubmit}>
                 <div class="col-md-6">
@@ -44,7 +44,7 @@ export default function SignUp(){
                 </div>
                 <div class="col-6">
                   <label for="inputPassword" class="form-label">Password</label>
-                  <input type="text" class="form-control" value = {password} onChange={(e) => setPassword(e.target.value)} id="inputPassword" required/>
+                  <input type="password" class="form-control" value = {password} onChange={(e) => setPassword(e.target.value)} id="inputPassword" required/>
                 </div>
                 <div class="col-12">
                   <button type="submit" class="btn btn-success">Sign in</button>
